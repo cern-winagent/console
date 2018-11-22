@@ -1,0 +1,2 @@
+# oconsole
+Prints the data
