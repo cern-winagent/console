@@ -1,0 +1,15 @@
+language: csharp
+solution: console.sln
+before_deploy:
+  - sha1sum plugin/bin/Release/console.dll > plugin/bin/Release/console.dll.sha1
+deploy:
+  provider: releases
+  api_key:
+    secure: qcl4R9gSiNh1N4Rmfao83MUCRk7j18Gkfovy4avjkxYNmlklNTk+WcG8f3MWBFUZZczJf+2dia94z2BcBe08JiymvUAIXBKNJ0vLnYxm59jLvRECV4EL/41+gZpVuKiTbMScy3b6JmHizjXqdTjYT7raxVS1qx7snTLLhyCZRP2m78P6pEhW7WJNEGpNWd29TVnqFiFcOJSfm2RT4+xLEpNMFZsp1wrRMY1eqt7Vm1CftAb25z3dhRwEl+i+b0NCgXV6hX3Ot+sDOf3AUM0jit+VGmq7ING8PumAfHUkJGKzXCPSUR5KN2i3+RfLiQlU5lK9E5w+34bmXhS+J/EJbqZqCobA/ga3syp00Gk+htfoul0Fk/XKuHWQYZD+ve8FSuiBTOGzAxzFbxpCDz0U9YGJmlEIuHP5THZcmRqYMwXnQ3RSm6FksiFYFrZ0rshBZbEJU8N9SzDSvkmlccIygG9qhHrOm1Dp6VBfYWeEDt5SfOfN0t6C3+SJDuEVrrnX/M2X6QoT6zkBpnNnjnZ78LsG5zWkZWu/SgAMaN649phS3YrO83v+k7Xj1BZECLFCtvz+NG0kCNVEcjc/Wu0tHQop7eUQg+4bSrg+Ul1wJWjrJZ20+Ux7+Ykt7++B6AtTdSxQyLcaftC9dc4ApBMj8AHPxSW8aUBiJj641WZ/KM8=
+  file: 
+    - plugin/bin/Release/console.dll
+    - plugin/bin/Release/console.dll.sha1
+  skip_cleanup: true
+  on:
+    repo: cern-winagent/oconsole
+    tags: true
