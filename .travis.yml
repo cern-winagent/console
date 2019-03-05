@@ -1,5 +1,8 @@
 language: csharp
 solution: console.sln
+script:
+  - wget -P bin/ https://github.com/cern-winagent/plugin/releases/latest/download/plugin.dll
+  - msbuild /p:Configuration=Release console.sln
 before_deploy:
   - sha1sum plugin/bin/Release/console.dll > plugin/bin/Release/console.dll.sha1
 deploy:
