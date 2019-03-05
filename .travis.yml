@@ -1,18 +1,19 @@
 language: csharp
 solution: console.sln
 script:
-  - wget -P bin/ https://github.com/cern-winagent/plugin/releases/latest/download/plugin.dll
+  - wget -P console/lib/ https://github.com/cern-winagent/plugin/releases/latest/download/plugin.dll
   - msbuild /p:Configuration=Release console.sln
 before_deploy:
-  - sha1sum plugin/bin/Release/console.dll > plugin/bin/Release/console.dll.sha1
+  - sha1sum console/bin/Release/console.dll > console/bin/Release/console.dll.sha1
 deploy:
   provider: releases
   api_key:
-    secure: qcl4R9gSiNh1N4Rmfao83MUCRk7j18Gkfovy4avjkxYNmlklNTk+WcG8f3MWBFUZZczJf+2dia94z2BcBe08JiymvUAIXBKNJ0vLnYxm59jLvRECV4EL/41+gZpVuKiTbMScy3b6JmHizjXqdTjYT7raxVS1qx7snTLLhyCZRP2m78P6pEhW7WJNEGpNWd29TVnqFiFcOJSfm2RT4+xLEpNMFZsp1wrRMY1eqt7Vm1CftAb25z3dhRwEl+i+b0NCgXV6hX3Ot+sDOf3AUM0jit+VGmq7ING8PumAfHUkJGKzXCPSUR5KN2i3+RfLiQlU5lK9E5w+34bmXhS+J/EJbqZqCobA/ga3syp00Gk+htfoul0Fk/XKuHWQYZD+ve8FSuiBTOGzAxzFbxpCDz0U9YGJmlEIuHP5THZcmRqYMwXnQ3RSm6FksiFYFrZ0rshBZbEJU8N9SzDSvkmlccIygG9qhHrOm1Dp6VBfYWeEDt5SfOfN0t6C3+SJDuEVrrnX/M2X6QoT6zkBpnNnjnZ78LsG5zWkZWu/SgAMaN649phS3YrO83v+k7Xj1BZECLFCtvz+NG0kCNVEcjc/Wu0tHQop7eUQg+4bSrg+Ul1wJWjrJZ20+Ux7+Ykt7++B6AtTdSxQyLcaftC9dc4ApBMj8AHPxSW8aUBiJj641WZ/KM8=
-  file: 
-    - plugin/bin/Release/console.dll
-    - plugin/bin/Release/console.dll.sha1
+    secure: j81orHup4LjN+xYlXCZwFff+iLPNx2rtVaW0Mu0BRgNKfuaGtish6bCOOYsLJUT/GiAt1SP8ACyFHJnRpAC881qf4f21g/uoxyV4AUlaRLFarB7hM8pCDiXFHV7j3i1AWg3uTM+C7WRkvakeItSqm40CgS/XQRZqDdEbIEuPp0aJohbT51NF8doZeS2CG66hz/jmQ6E3Zp6MUNgCwn7uqw7gkKZ7LvcIkD7XwZDQcrOaforhnJCeiQCGq9DOG+qiG+UMxn2RDEgUCJfJRRnNJ9PtQ+5fudOm1erdwGRdGITU3oPeHzD6EJeOETxAiDRgW7Ujlx8kiNHK926bEVs3HiHr6wax85DMqkaZkGf6YMjHeYWlRM3OLqc2zfIDbFb5/1PsA4k7bwzj4/k0J75+t6GI3zcZHBhNpLIiYjCisgGtBGoUPrC6Exz+Whiq373fhpd/qzk5FOuEGvMgKClxmlvYulfrbGlOACGnYj2BHkLlPK5UbWTk2V6Gc/ZgCaF1GEZCgQx3TDLFsMI3j0oX9fNQ66w5+MbPM2b1XrWVn6IJ6Za6GCJbSzLeFyebFg6yLbxQ/78xxQ1zqmiXuXkblNiuVnK+/es5Srd43ngT+t0nnB1SlwzcOBEGaAinrcn0bK7V44WxNQOKBai0U1YOina1CDeApcm0EETjd+IId+o=
+  file:
+  - console/bin/Release/console.dll
+  - console/bin/Release/console.dll.sha1
   skip_cleanup: true
+  overwrite: true
   on:
-    repo: cern-winagent/oconsole
+    repo: cern-winagent/console
     tags: true

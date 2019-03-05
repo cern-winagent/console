@@ -1,2 +1,2 @@
-# oconsole
+# Console
 Prints the data
