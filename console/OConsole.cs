@@ -1,20 +1,23 @@
-﻿using System;
+﻿using plugin;
+using System;
 using ConsoleTableExt;
 using System.Data;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
-namespace plugin
+namespace console
 {
     [PluginAttribute(PluginName = "Console")]
     public class OConsole : IOutputPlugin
     {
-        public void Execute(string json, string[] options)
+        public void Execute(string jsonData, JObject set)
         {
-            switch (options[0])
+            var settings = set.ToObject<Settings.Plugin>();
+
+            switch (settings.OutputType)
             {
                 case "table":
-                    JObject jsonUpdatesInfo = JObject.Parse(json);
+                    JObject jsonUpdatesInfo = JObject.Parse(jsonData);
 
                     foreach (var property in jsonUpdatesInfo)
                     {
@@ -34,7 +37,7 @@ namespace plugin
                     break;
                 case "json":
                 case "default":
-                    Console.Write(json);
+                    Console.Write(jsonData);
                     break;
             }
         }
