@@ -1,15 +1,12 @@
 ﻿using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.ComponentModel;
 
 namespace console.Settings
 {
     class Plugin
     {
-        [JsonProperty(PropertyName = "output_type")]
+        [DefaultValue("json")]
+        [JsonProperty(PropertyName = "output_type", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
         public string OutputType { get; set; }
     }
 }
