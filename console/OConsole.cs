@@ -18,25 +18,33 @@ namespace console
             {
                 case "table":
                     JObject jsonUpdatesInfo = JObject.Parse(jsonData);
-
-                    foreach (var property in jsonUpdatesInfo)
+                    try
                     {
-                        Console.WriteLine();
-                        Console.Write(property.Key + ": ");
-                        if (property.Value.HasValues)
+                        foreach (var property in jsonUpdatesInfo)
                         {
                             Console.WriteLine();
-                            DataTable datatable = JsonConvert.DeserializeObject<DataTable>(property.Value.ToString());
-                            ConsoleTableBuilder.From(datatable).WithFormat(ConsoleTableBuilderFormat.Minimal).ExportAndWriteLine();
-                        }
-                        else
-                        {
-                            Console.WriteLine(property.Value);
+                            Console.Write(property.Key + ": ");
+                            if (property.Value.HasValues)
+                            {
+                                Console.WriteLine();
+                                DataTable datatable = JsonConvert.DeserializeObject<DataTable>(property.Value.ToString());
+                                ConsoleTableBuilder.From(datatable).WithFormat(ConsoleTableBuilderFormat.Minimal).ExportAndWriteLine();
+                            }
+                            else
+                            {
+                                Console.WriteLine(property.Value);
+                            }
                         }
                     }
+                    catch(JsonSerializationException)
+                    {
+                        throw new Exceptions.TableOutputNotSupported("Table output is not supported for the specified input data");
+                    }
                     break;
+
                 case "json":
-                case "default":
+
+                default:
                     Console.Write(jsonData);
                     break;
             }
