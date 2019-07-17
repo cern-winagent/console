@@ -3,10 +3,10 @@ using System.ComponentModel;
 
 namespace console.Settings
 {
-    class Plugin
+    class Console
     {
         [DefaultValue("json")]
-        [JsonProperty(PropertyName = "output_type", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
+        [JsonProperty(PropertyName = "outputType", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
         public string OutputType { get; set; }
     }
 }

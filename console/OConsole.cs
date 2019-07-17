@@ -12,7 +12,7 @@ namespace console
     {
         public void Execute(string jsonData, JObject set)
         {
-            var settings = set.ToObject<Settings.Plugin>();
+            var settings = set.ToObject<Settings.Console>();
 
             switch (settings.OutputType)
             {
@@ -45,7 +45,7 @@ namespace console
                 case "json":
 
                 default:
-                    Console.Write(jsonData);
+                    Console.WriteLine(jsonData);
                     break;
             }
         }

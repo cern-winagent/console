@@ -53,7 +53,7 @@
   <ItemGroup>
     <Compile Include="Exceptions\TableOutputNotSupported.cs" />
     <Compile Include="OConsole.cs" />
-    <Compile Include="Settings\Plugin.cs" />
+    <Compile Include="Settings\Console.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
