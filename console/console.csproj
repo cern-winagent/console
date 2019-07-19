@@ -51,7 +51,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Exceptions\TableOutputNotSupported.cs" />
+    <Compile Include="Exceptions\TableOutputNotSupportedException.cs" />
     <Compile Include="OConsole.cs" />
     <Compile Include="Settings\Console.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

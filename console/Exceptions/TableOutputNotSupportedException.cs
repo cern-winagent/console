@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace console.Exceptions
 {
-    class TableOutputNotSupported :Exception
+    class TableOutputNotSupportedException :Exception
     {
-        public TableOutputNotSupported(string message, Exception inner) : base(message, inner)
+        public TableOutputNotSupportedException(string message, Exception inner) : base(message, inner)
         {
 
         }
