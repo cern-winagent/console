@@ -8,7 +8,7 @@ namespace console.Exceptions
 {
     class TableOutputNotSupported :Exception
     {
-        public TableOutputNotSupported(string message) : base(message)
+        public TableOutputNotSupported(string message, Exception inner) : base(message, inner)
         {
 
         }

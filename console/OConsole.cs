@@ -36,9 +36,9 @@ namespace console
                             }
                         }
                     }
-                    catch(JsonSerializationException)
+                    catch(JsonSerializationException jse)
                     {
-                        throw new Exceptions.TableOutputNotSupported("Table output is not supported for the specified input data");
+                        throw new Exceptions.TableOutputNotSupportedException("Table output is not supported for the specified input data", jse);
                     }
                     break;
 
