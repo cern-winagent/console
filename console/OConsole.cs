@@ -10,6 +10,8 @@ namespace console
     [PluginAttribute(PluginName = "Console")]
     public class OConsole : IOutputPlugin
     {
+        public event EventHandler<MessageEventArgs> MessageEvent;
+
         public void Execute(string jsonData, JObject set)
         {
             var settings = set.ToObject<Settings.Console>();
